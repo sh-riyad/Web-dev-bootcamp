@@ -7,3 +7,4 @@ export function getCartItems() {
 export function setCartItems(cartItems) {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
 }
+

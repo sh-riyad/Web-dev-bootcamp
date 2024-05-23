@@ -2,7 +2,7 @@ import './style.css'
 import {getCartItems, setCartItems} from "./utils"
 
 async function getProducts() {
-    const res = await fetch('https://dummyjson.com/products?limit=20');
+    const res = await fetch('https://dummyjson.com/products?limit=20&skip=10');
     const data = await res.json();
 
     return data.products;
@@ -49,6 +49,7 @@ function createProductCart(product) {
             cartItems.items.push({
                 id: product.id,
                 title: product.title,
+                brand: product.brand,
                 description:product.description,
                 thumbnail: product.thumbnail,
                 price: product.price,
