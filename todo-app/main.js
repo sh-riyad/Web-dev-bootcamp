@@ -7,7 +7,8 @@ const alert = document.querySelector("#alert");
 let completedContent = document.querySelector("#completedContainer");
 let todoContent = document.querySelector("#todoContainer");
 let inprogressContent = document.querySelector("#inprogressContainer");
-
+const logoutButton = document.querySelector("#logoutButton");
+const inputElement = document.querySelector("#todoInput");
 
 let responseMessage;
 let currentUser = localStorage.getItem("currentUser") || "None";
@@ -21,12 +22,30 @@ function verifyLogin() {
     }
 }
 
+// logout function
+function logout() {
+  logoutButton.addEventListener("click", () => {
+    localStorage.setItem("currentUser", "None");
+    showAlert("Logout successfull", "green");
+    
+    // wait 1 sec before login
+    setTimeout(() => {
+      window.location.href = 'login.html';
+ }, 1000);
+    
+  })
+}
+
+function resetInput() {
+  inputElement.value = '';
+  inputElement.placeholder = "Add a new task in todo";
+}
 // to render the main container
 async function renderTodo() {
     const todos = await readTodoList();
-    console.log(todos);
-    showTodo(todos);
-    taskSubmit.addEventListener("click", () => { createTodo(todos) });
+  showTodo(todos);
+  resetInput()
+  taskSubmit.addEventListener("click", () => { createTodo() });
 }
 
 // Read todo list from api
@@ -231,10 +250,11 @@ function createTodoDiv(todo) {
 }
 
 // Create new to todo
-async function createTodo(todos) {
+async function createTodo() {
     const url = `${baseUrl}/${currentUser}/todos`;
-    const todoInput = document.querySelector("#todoInput").value
-
+    
+    const todoInput = inputElement.value
+    const todos = await readTodoList();
     let flag = true;
     // check if new item is already available in todo list
     todos.map(todo => {
@@ -257,14 +277,15 @@ async function createTodo(todos) {
         } else {
             const data = await response.json();
             responseMessage = data.message
-            showAlert(responseMessage, "green");
-            renderTodo();
+          showAlert(responseMessage, "green");
+          
+          renderTodo();
 
         }
     } else {
         showAlert("The item already exists in the to-do list.", "red");
     }
-    
+  
 
 }
 
@@ -346,4 +367,5 @@ function hideAlert(svg) {
     svg.classList.add("hidden");
 }
 
-verifyLogin()
+verifyLogin();
+logout();

@@ -34,6 +34,7 @@ function renderLogin() {
 
 
         if (username == "" || password == "") {
+            
             showAlert("Username or password cannot be empty");
         }else if (usernames.includes(username)) {
             if (username === password) {

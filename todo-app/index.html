@@ -172,18 +172,20 @@
       </div>
 
       <div
-        class="w-3/4 h-auto bg-white shadow-lg rounded-lg flex flex-col items-center pt-12 pb-16"
+        class="w-3/4 h-auto bg-white shadow-lg rounded-lg flex flex-col items-center pt-12 pb-8"
       >
         <!-- Title Container-->
         <div>
           <h1 class="text-center text-4xl font-bold">Task Manager</h1>
-          <p class="text-center text-base text-gray-500 mt-4">
+          <p class="text-center text-base text-gray-500 mx-3 mt-4">
             Stay organized and productive with our intuitive to-do app.
           </p>
         </div>
 
         <!-- New todo add Container -->
-        <div class="w-3/5 mt-10 flex justify-between">
+        <div
+          class="w-full sm:w-3/5 mx-3 gap-3 mt-10 flex justify-center items-center sm:justify-between flex-col sm:flex-row"
+        >
           <!-- Input field -->
           <input
             id="todoInput"
@@ -192,7 +194,7 @@
           />
           <button
             id="taskSubmit"
-            class="w-fit h-10 text-center text-white px-6 bg-gray-900 rounded-lg"
+            class="w-fit text-base sm:text-xs md:text-sm lg:text-base h-10 text-center text-white px-6 sm:px-2 xl:px-6 bg-gray-900 rounded-lg"
             type="submit"
           >
             Add Task
@@ -201,10 +203,10 @@
 
         <!-- To do list based on status-->
         <div
-          class="flex w-full flex-col sm:flex-row mt-10 justify-between px-8"
+          class="flex w-full flex-col gap-5 sm:flex-row mt-10 justify-between px-8"
         >
           <!-- To Do Container -->
-          <div class="w-[30%] bg-white shadow-lg rounded">
+          <div class="w-full sm:w-[30%] bg-white shadow-lg rounded">
             <div class="w-full h-12 bg-[#dbe9fe] flex items-center p-6">
               <span class="font-serif font-semibold">To Do</span>
             </div>
@@ -215,7 +217,7 @@
           </div>
 
           <!-- In Pregress Container-->
-          <div class="w-[30%] bg-white shadow-lg rounded">
+          <div class="w-full sm:w-[30%] bg-white shadow-lg rounded">
             <div class="w-full h-12 bg-[#f3e8ff] flex items-center p-6">
               <span class="font-serif font-semibold">In Progress</span>
             </div>
@@ -227,7 +229,7 @@
           </div>
 
           <!-- Completed Container -->
-          <div class="w-[30%] bg-white shadow-lg rounded">
+          <div class="w-full sm:w-[30%] bg-white shadow-lg rounded">
             <div class="w-full h-12 bg-[#dcfce7] flex items-center p-6">
               <span class="font-serif font-semibold">Completed</span>
             </div>
@@ -237,6 +239,17 @@
               <!-- Completed content goes here-->
             </div>
           </div>
+        </div>
+
+        <!-- Logout button -->
+        <div class="w-full flex justify-end me-16">
+          <button
+            id="logoutButton"
+            class="w-fit text-base lg:text-base h-10 text-center text-white px-6 lg:px-6 bg-gray-900 rounded-lg mt-8"
+            type="submit"
+          >
+            Logout
+          </button>
         </div>
       </div>
     </section>
