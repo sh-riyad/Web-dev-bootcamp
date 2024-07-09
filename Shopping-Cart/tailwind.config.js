@@ -1,9 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 import daisyui from "daisyui"
-import { Container } from "postcss"
 export default {
-  content: ["./index.html",
-    "./*.html"
+  content: [
+    "./*.html",
+    "./*.js"
   ],
   theme: {
     container: {

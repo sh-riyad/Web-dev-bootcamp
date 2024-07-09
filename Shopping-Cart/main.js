@@ -18,7 +18,7 @@ function createProductCart(product) {
     div.innerHTML = `
     <div class="card bg-base-100 shadow-xl relative">
             <figure>
-              <img
+              <img class="h-[30%] w-[80%]"
                 src="${product.thumbnail}"
                 alt="${product.title}"
               />
@@ -30,7 +30,7 @@ function createProductCart(product) {
             </div>
             <div class="card-body">
               <h2 class="card-title">${product.title}</h2>
-              <p>${product.description}</p>
+              <p class="text-sm">${product.description.substring(0, 80)}</p>
               <p>$${product.price}</p>
               <div id="addToCart" class="card-actions justify-end">
                 <button id="addToCartButton" class="btn btn-sm btn-primary"></button>
